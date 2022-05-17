@@ -16,7 +16,7 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = process.env.CLIENT_ID; // Your client id
+var client_id = process.env.client_id; // Your client id
 var client_secret = process.env.client_secret; // Your secret
 var redirect_uri = process.env.redirect_uri; // Your redirect uri
 
@@ -44,6 +44,7 @@ app.use(express.static(__dirname + '/public'))
    .use(cookieParser());
 
 app.get('/login', function(req, res) {
+  console.log('login')
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -61,6 +62,7 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/callback', function(req, res) {
+  console.log('callback')
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -123,6 +125,7 @@ app.get('/callback', function(req, res) {
 });
 
 app.get('/refresh_token', function(req, res) {
+  console.log('refresh')
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
