@@ -63,21 +63,17 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
       (function() {
-        console.log('first fuckin thing')
-
         /**
          * Obtains parameters from the hash of the URL
          * @return Object
          */
         function getHashParams() {
-          console.log('getHash')
           var hashParams = {};
           var e, r = /([^&;=]+)=?([^&;]*)/g,
               q = window.location.hash.substring(1);
           while ( e = r.exec(q)) {
             hashParams[e[1]] = decodeURIComponent(e[2]);
           }
-          console.log('gotHash')
           return hashParams;
         }
 
@@ -94,9 +90,6 @@
         var access_token = params.access_token,
             refresh_token = params.refresh_token,
             error = params.error;
-
-        console.log('access token', access_token)
-        console.log('refresh token', refresh_token)
 
         if (error) {
           console.log(error)
